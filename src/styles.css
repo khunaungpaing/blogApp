@@ -52,6 +52,6 @@ body {
   min-height: 85vh;
 }
 
-.card{
-  max-width: 400px;
+.h-120 {
+  max-height: 700px;
 }

@@ -8,13 +8,14 @@ import {TermsAndConditionsComponent} from "./pages/terms-and-conditions/terms-an
 import {ContactUsComponent} from "./pages/contact-us/contact-us.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'category', component: SingleCategoryComponent },
-  { path: 'post', component: SinglePostComponent },
+  {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'category', component: SingleCategoryComponent},
+  {path: 'post', component: SinglePostComponent},
 
-  { path: 'about', component: AboutUsComponent },
-  { path: 'term-condition', component: TermsAndConditionsComponent },
-  { path: 'contact', component: ContactUsComponent }
+  {path: 'about', component: AboutUsComponent},
+  {path: 'term-condition', component: TermsAndConditionsComponent},
+  {path: 'contact', component: ContactUsComponent}
 ];
 
 @NgModule({
