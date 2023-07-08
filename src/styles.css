@@ -55,3 +55,7 @@ body {
 .h-120 {
   max-height: 700px;
 }
+
+.z-1 {
+  z-index: 1;
+}

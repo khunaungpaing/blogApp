@@ -7,14 +7,98 @@
           when an unknown printer took a galley of type and scrambled it to make a type specimen book.
     </span>
     </div>
-    <form class="flex lg:gap-14 lg:flex-row sm:gap-3 sm:flex-col justify-center items-center">
-      <input class="border border-gray-300 text-gray-900 text-sm !outline-none rounded focus:ring-emerald-500 focus:border-emerald-400 focus:border-2 w-96 h-12 p-3"
-             placeholder="Your Name"
-             required type="text">
-      <input class="border border-gray-300 text-gray-900 text-sm !outline-none rounded focus:ring-emerald-500 focus:border-emerald-400 focus:border-2 w-96 h-12 p-3"
-             placeholder="Email Address"
-             required type="text">
-      <button class="h-12 w-96 px-6 text-xl rounded bg-primary text-white" type="submit">Subscribe</button>
+    <form (ngSubmit)="onSubmit()"
+          [formGroup]="subFrom"
+          class="flex  flex-col">
+      <div *ngIf="notEmpty"
+           class="flex mt-2 text-sm text-red-800 bg-red-200 p-4 w-full rounded mb-2" role="alert">
+        <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
+             xmlns="http://www.w3.org/2000/svg">
+          <path clip-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                fill-rule="evenodd"></path>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium">Email is already in...</span>
+        </div>
+      </div>
+      <div *ngIf="isSubscribe"
+           class="flex mt-2 text-sm text-green-800 bg-green-200 p-4 w-full rounded mb-2" role="alert">
+
+        <svg class="flex-shrink-0 inline w-5 h-5 mr-3"
+             fill="currentColor"
+             height="48" viewBox="0 -960 960 960"
+             width="48"
+             xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="m421-298 283-283-46-45-237 237-120-120-45 45 165 166Zm59 218q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Z"/>
+        </svg>
+        <span class="sr-only">success</span>
+        <div>
+          <span class="font-medium">Thank you for subscribing to our newsletter service. Stay tuned for Awesome blog posts...</span>
+        </div>
+      </div>
+      <div *ngIf="!isSubscribe"
+           class="flex gap-12 w-full justify-center items-start">
+        <div>
+          <input
+            class="border border-gray-300 text-gray-900 text-sm !outline-none rounded focus:ring-emerald-500 focus:border-emerald-400 focus:border-2 w-96 h-12 p-3"
+            formControlName="name"
+            placeholder="Your Name"
+            required type="text">
+          <div *ngIf="subFrom.controls['name'].touched && subFrom.controls['name'].errors?.['required']"
+               class="flex mt-2 text-sm text-red-800" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    fill-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">Name is required...</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <input
+            class="border border-gray-300 text-gray-900 text-sm !outline-none rounded focus:ring-emerald-500 focus:border-emerald-400 focus:border-2 w-96 h-12 p-3"
+            formControlName="email"
+            placeholder="Email Address"
+            required type="text">
+          <div *ngIf="subFrom.controls['email'].touched && subFrom.controls['email'].errors?.['required']"
+               class="flex mt-2 text-sm text-red-800" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    fill-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">Email is required...</span>
+            </div>
+          </div>
+          <div *ngIf="subFrom.controls['email'].touched && subFrom.controls['email'].errors?.['pattern']"
+               class="flex mt-2 text-sm text-red-800" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    fill-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">Email is invalid...</span>
+            </div>
+          </div>
+        </div>
+        <button [disabled]="subFrom.invalid" class="h-12 w-96 px-6 text-xl rounded bg-primary text-white" type="submit">
+          Subscribe
+        </button>
+
+      </div>
     </form>
   </div>
 </div>

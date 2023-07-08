@@ -1,27 +1,25 @@
-<div class="max-w-fit min-w-0 text-body-text bg-white">
-  <div class="flex flex-col shadow">
-    <div class="w-400px">
-      <img class="object-cover object-top h-56 min-w-full"
-           src="https://img.freepik.com/free-photo/boyfriend-girlfriend-having-fun_23-2148977566.jpg"
+<div *ngIf="postData" [routerLink]="['/post',postData.id]" class="w-80 rounded-md h-full text-body-text bg-white">
+  <div class="flex flex-col shadow h-full">
+    <div class="w-400px ">
+      <img class="object-cover object-top h-56 min-w-full rounded-t-md"
+           src="{{postData?.data?.postImgPath}}"
            alt="post-img"/>
     </div>
     <div class="flex flex-col gap-3 py-4 px-6 max-w-sm min-w-0">
       <div>
-        <span class="uppercase mr-5 text-red-500">Inspiring</span>
-        <span class="uppercase mr-5 text-green-500">featured</span>
-        <span class="uppercase mr-5 text-cyan-500">views-1,200,312</span>
+        <span class="uppercase mr-5 text-red-500">{{postData?.data?.category?.category}}</span>
+        <span *ngIf="postData?.data?.isFeatured" class="uppercase mr-5 text-green-500">featured</span>
+        <span class="uppercase mr-5 text-cyan-500">views - {{postData?.data?.views}}</span>
       </div>
       <div>
-        <h1>HOW TO START A BLOG IN 2020 EDITED NEW CATEGORY</h1>
-        <p class="text-justify">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-
+        <h1 class="text-base">{{postData?.data?.title}}</h1>
+        <p class="mt-2 text-justify">
+          {{postData?.data?.excerpt}}
         </p>
       </div>
       <div>
-        <span class="uppercase mr-5 text-yellow-600">last updated - sep 20,2022</span>
+        <span
+          class="uppercase mr-5 text-yellow-600">last updated - {{postData?.data?.createdAt.toMillis() | date}}</span>
       </div>
     </div>
   </div>
