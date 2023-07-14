@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "blogapp-af815"
+  },
+  "targets": {
+    "blogapp-af815": {
+      "hosting": {
+        "KhunBlog": [
+          "khun-blog"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

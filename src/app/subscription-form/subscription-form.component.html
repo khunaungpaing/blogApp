@@ -1,5 +1,5 @@
-<div class="mx-20">
-  <div class="container max-w-full h-72 bg-secondary p-10 flex flex-col gap-5 justify-center">
+<div>
+  <div class="w-screen h-fit bg-secondary p-10 flex flex-col gap-5 justify-center">
     <div class="flex flex-col gap-3 justify-center items-center">
       <span class="uppercase mr-5 text-3xl font-bold">Subscription Form</span>
       <span class="text-center lg:px-64 sm:px-10">
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div *ngIf="!isSubscribe"
-           class="flex gap-12 w-full justify-center items-start">
+           class="flex flex-col sm:flex-row gap-12 w-full justify-center items-center sm:items-start">
         <div>
           <input
             class="border border-gray-300 text-gray-900 text-sm !outline-none rounded focus:ring-emerald-500 focus:border-emerald-400 focus:border-2 w-96 h-12 p-3"

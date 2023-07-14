@@ -58,3 +58,8 @@ body {
 .z-1 {
   z-index: 1;
 }
+
+.text-s{
+  font-size: 0.5rem;
+  line-height: 0.75rem;
+}

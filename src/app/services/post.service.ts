@@ -40,7 +40,7 @@ export class PostService {
 
   loadLatest() {
     return this.afs.collection(this._collectionName, ref =>
-      ref.orderBy('createdAt'))
+      ref.limit(6).orderBy('createdAt'))
       .snapshotChanges().pipe(
         map(action => {
           return action.map(a => {

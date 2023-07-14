@@ -1,1 +1,15 @@
-{}
+{
+  "hosting": {
+    "target": "KhunBlog",
+    "public": "dist/blog-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [ {
+      "source": "**",
+      "destination": "/index.html"
+    } ]
+  }
+}

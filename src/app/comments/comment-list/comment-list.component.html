@@ -1,46 +1,23 @@
+
 <div class="flex flex-col gap-5 p-12 shadow">
-  <h1 class="text-2xl text-primary">Comments (25)</h1>
-  <div class="flex flex-col gap-5 py-5 px-8 bg-nav-footer shadow text-base">
-    <h1 class="text-xl">John Doe</h1>
-    <p class="text-red-500">Last Uploaded : sep 20,2022</p>
-    <p class="text-justify">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    </p>
-    <div>
-      <input class="text-cyan-500" type="button" value="Reply">
-      <input class="text-cyan-500 ml-4" type="button" value="View Reply">
+  <div *ngIf="cmtCount>0;else noData">
+    <h1 class="text-2xl text-primary">Comments ({{cmtCount}}) </h1>
+    <div  *ngFor="let cmt of comments">
+      <div class="flex flex-col gap-2 py-5 px-8 bg-nav-footer shadow text-base mb-2">
+        <h1 class="text-xl"> {{ cmt.data.username }}</h1>
+        <p class="text-red-500 text-xs">Last Uploaded : {{ cmt?.data?.createdAt?.toMillis() | date}}</p>
+        <p class="text-justify">
+          {{ cmt.data.comment }}
+        </p>
+        <div class="flex justify-end">
+          <input class="text-cyan-500" type="button" value="Reply">
+          <input class="text-cyan-500 ml-4" type="button" value="View Reply">
+        </div>
+      </div>
     </div>
   </div>
-  <div class="flex flex-col gap-5 py-5 px-8 bg-nav-footer shadow text-base">
-    <h1 class="text-xl">John Doe</h1>
-    <p class="text-red-500">Last Uploaded : sep 20,2022</p>
-    <p class="text-justify">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    </p>
-    <div>
-      <input class="text-cyan-500" type="button" value="Reply">
-      <input class="text-cyan-500 ml-4" type="button" value="View Reply">
-    </div>
-  </div>
-  <div class="flex flex-col gap-5 py-5 px-8 bg-nav-footer shadow text-base">
-    <h1 class="text-xl">John Doe</h1>
-    <p class="text-red-500">Last Uploaded : sep 20,2022</p>
-    <p class="text-justify">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    </p>
-    <div>
-      <input class="text-cyan-500" type="button" value="Reply">
-      <input class="text-cyan-500 ml-4" type="button" value="View Reply">
-    </div>
-  </div>
+  <ng-template #noData >
+    <span class="text-xl text-primary">No Comment</span>
+  </ng-template>
 
 </div>

@@ -15,8 +15,8 @@
         <h1 class="text-2xl text-primary">{{post?.['title']}}</h1>
         <p [innerHTML]="post?.['content']" class="text-justify"></p>
       </div>
-      <app-comment-form></app-comment-form>
-      <app-comment-list></app-comment-list>
+      <app-comment-form [postId]="this.postId"></app-comment-form>
+      <app-comment-list [postId]="this.postId"></app-comment-list>
     </div>
 
     <div class="flex flex-col gap-5 py-5">
